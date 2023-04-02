@@ -5,7 +5,7 @@ using UnityEngine;
 public class CrowdManager : MonoBehaviour
 {
 
-    public ManPool manPool;
+    public GameObjectPool manPool;
 
     public int initialCount;
 
@@ -43,7 +43,7 @@ public class CrowdManager : MonoBehaviour
 
     public void removeMan(Man man)
     {
-        manPool.realeaseMan(man);
+        manPool.realeaseItem(man.gameObject);
         countDisplay.addCount(-1);
     }
 
@@ -77,8 +77,8 @@ public class CrowdManager : MonoBehaviour
     {
         float factor = 0.5F;
         index = (index + 1) % dirs.GetLength(0);//dirs tan bir sonraki koordinatı al
-        Man newMan;
-        newMan = manPool.getManFromPool();        
+        GameObject item = manPool.getItemFromPool();
+        Man newMan = item.GetComponent<Man>();
         newMan.transform.parent = this.transform;
         //yukardaki default tanımlı x ve z koordinatlarını sıradan kullanarak nesneyi konumlandırıyoruz.
         newMan.transform.localPosition = new Vector3(dirs[index, 0] * factor, newMan.manInfo.defYPos, dirs[index, 1] * factor);
@@ -88,10 +88,12 @@ public class CrowdManager : MonoBehaviour
     private void initCrowd()
     {
         Man newMan;
+        GameObject item;
         Vector3 bufferPos;
         for (int i = 0; i < initialCount; i++)
         {            
-            newMan = manPool.getManFromPool();
+            item = manPool.getItemFromPool();
+            newMan = item.GetComponent<Man>();
             bufferPos = newMan.transform.localPosition;
             newMan.transform.parent = this.transform;
             //yukardaki default tanımlı x ve z koordinatlarını sıradan kullanarak nesneyi konumlandırıyoruz.

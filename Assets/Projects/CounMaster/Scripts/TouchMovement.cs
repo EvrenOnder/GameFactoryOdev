@@ -8,14 +8,21 @@ public class TouchMovement : MonoBehaviour
     private Vector2 movement;
     public float speed;
 
+    private TouchControl touchControl;
+
     public Transform mainPlatform;
     private InputAction touchDelta;
     // Start is called before the first frame update
     private void Awake()
     {
-        
+        touchControl = new TouchControl();
+        touchControl.TouchMove.Enable();
     }
 
+    private void OnEnable()
+    {
+        touchControl.TouchMove.MoveHorizontal.performed += OnDeltaTouch;
+    }
     public void OnDeltaTouch(InputAction.CallbackContext context)
     {
         MinMAxPosCalculate();

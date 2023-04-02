@@ -7,6 +7,7 @@ public class MainMovement : MonoBehaviour
 
     public bool isMove= false;
     public float speed;
+    public Vector3 direction = Vector3.back;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +20,7 @@ public class MainMovement : MonoBehaviour
     {
         if (isMove)
         {
-            this.transform.Translate(Vector3.back * Time.deltaTime * speed, Space.Self);
+            this.transform.Translate(direction * Time.deltaTime * speed, Space.Self);
         }
     }
 
