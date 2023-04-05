@@ -52,6 +52,18 @@ public class Bardak : PoolAbleObject
             {
                 bardakManager.addNewBardak(bardak);
             }
+        }else if (other.tag == "Kahve")
+        {
+            kahveDoldur();
+        }
+    }
+
+    private void kahveDoldur()
+    {
+        KahveDolum kahveDolum = GetComponentInChildren<KahveDolum>();
+        if (kahveDolum != null)
+        {
+            kahveDolum.yuksel = true;
         }
     }
 
