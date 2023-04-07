@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class CofeMove : MonoBehaviour
 {
+    public Vector3 moveDirection;
     public float movementRange = 2f; // Nesnenin hareket edebileceği maksimum mesafe.
     public float movementSpeed = 1f; // Nesnenin hareket hızı.
-    private float startXPos; // Başlangıç pozisyonu.
+    private Vector3 startPos; // Başlangıç pozisyonu.
 
     void Start()
     {
-        startXPos = transform.position.x;
+        startPos = transform.position;
     }
 
     void Update()
@@ -19,7 +20,7 @@ public class CofeMove : MonoBehaviour
         float movementDistance = movementRange * Mathf.Sin(Time.time * movementSpeed);
 
         // Yeni pozisyon hesaplanıyor ve nesneye atanıyor.
-        Vector3 newPos = new Vector3(startXPos + movementDistance, transform.position.y, transform.position.z);
+        Vector3 newPos =startPos + moveDirection * movementDistance;
         transform.position = newPos;
     }
 }
