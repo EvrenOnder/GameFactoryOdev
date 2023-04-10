@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Obstacle
+  - Bardak
+  - Kapak
+  - Kahve
+  - Karton
   layers:
   - Default
   - TransparentFX
