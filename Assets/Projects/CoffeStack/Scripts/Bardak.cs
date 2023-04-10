@@ -4,7 +4,6 @@ using UnityEngine;
 public class Bardak : PoolAbleObject
 {
     public float bardakAralik;
-
     public BardakManager bardakManager;
     private Bardak parentBardak { get; set; }//hangi bardağın arkasına eklenmişim
     private Bardak childBardak { get; set; }// hangi bardak benim arkama eklenmiş
@@ -27,9 +26,11 @@ public class Bardak : PoolAbleObject
         if (parentBardak != null)
         {
             Vector3 pos =  parentBardak.transform.position;
+            Vector3 myPos = transform.position;
             float newX = Mathf.Lerp(this.transform.position.x, pos.x, bardakManager.xMoveSensitivity);
             pos.z += bardakManager.bardakAralik;
             pos.x = newX;
+            pos.y = myPos.y;
             transform.position = pos;
         }
     }
@@ -51,10 +52,14 @@ public class Bardak : PoolAbleObject
             if (bardak != null)
             {
                 bardakManager.addNewBardak(bardak);
+                CoffeEventManager.instance.fireMoneyAdd(1);
+                CoffeEventManager.instance.fireShowTotalEarn(this.transform.position , 1);
             }
         }else if (other.tag == "Kahve")
         {
             kahveDoldur();
+            CoffeEventManager.instance.fireMoneyAdd(1);
+            CoffeEventManager.instance.fireShowTotalEarn(this.transform.position , 1);
         }
     }
 

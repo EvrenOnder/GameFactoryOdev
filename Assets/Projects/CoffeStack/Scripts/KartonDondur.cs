@@ -50,10 +50,6 @@ public class KartonDondur : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         Debug.Log("Kapak Takma Basladi");
         RotateObject();
-        MeshControl meshControl = other.GetComponent<MeshControl>();
-        if (meshControl != null)
-        {
-            meshControl.meshDegistir (2);//karton takılmış bardak hali.
-        }
+
     }    
 }
