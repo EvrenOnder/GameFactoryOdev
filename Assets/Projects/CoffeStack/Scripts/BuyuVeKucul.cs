@@ -10,7 +10,7 @@ public class BuyuVeKucul : MonoBehaviour
 
     private Vector3 initialScale; // başlangıç boyutu
     private Vector3 targetScale; // hedef boyut
-
+    private bool isBuyuKucul;
     void Start()
     {
 
@@ -38,15 +38,20 @@ public class BuyuVeKucul : MonoBehaviour
         }
 
         transform.localScale = initialScale; // büyütme/küçültme işlemi tamamlandıktan sonra obje boyutu başlangıç boyutuna döndürülür
+        isBuyuKucul = false;
     }
 
     public void buyutKucult()
     {
+        if (isBuyuKucul)
+        {
+            return;
+        }
         initialScale = transform.localScale;
         targetScale = initialScale * (1f + growthAmount); // hedef boyut, başlangıç boyutunun belirli bir oranı kadar büyük
-
+        isBuyuKucul = true;
         StartCoroutine(GrowAndShrink());
-        StartCoroutine(GrowAndShrink());
+      //  StartCoroutine(GrowAndShrink());
     }
 
 }

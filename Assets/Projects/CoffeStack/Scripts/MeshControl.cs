@@ -37,14 +37,30 @@ public class MeshControl : MonoBehaviour
             move.asagiYukariHareket();
             CoffeEventManager.instance.fireShowTotalEarn(this.transform.position , 1);
             CoffeEventManager.instance.fireMoneyAdd(1);
+        }else if (other.tag == "Milk")
+        {
+            meshDegistir(3);            
+            CoffeEventManager.instance.fireShowTotalEarn(this.transform.position , 1);
+            CoffeEventManager.instance.fireMoneyAdd(1);
         }
         
     }
 
     public  void meshDegistir(int newMesh)
     {
-     //   meshs[activeMesh].gameObject.SetActive(false);
+        //   meshs[activeMesh].gameObject.SetActive(false);
+
+        if (newMesh == 0 || newMesh == 3)
+        {
+            meshs[0].gameObject.SetActive(false);
+            meshs[3].gameObject.SetActive(false);
+            activeMesh = newMesh;
+        }
+
+        if (newMesh == 1) //kapak ekleniyor
+        {
+            newMesh = activeMesh + 1;
+        }
         meshs[newMesh].gameObject.SetActive(true);
-        activeMesh = newMesh;
     }
 }
