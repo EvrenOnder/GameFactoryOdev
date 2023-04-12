@@ -71,6 +71,7 @@
      <Compile Include="Assets\Projects\CoffeStack\Scripts\Bardak.cs" />
      <Compile Include="Assets\Projects\CoffeStack\Scripts\CartonAnimation.cs" />
      <Compile Include="Assets\Projects\CoffeStack\Scripts\AsagiYukariMove.cs" />
+     <Compile Include="Assets\Projects\CoffeStack\Scripts\FreeKol.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />

@@ -98,4 +98,23 @@ public class Bardak : PoolAbleObject
         yield return new WaitForSeconds(0.1f);
         parentBardak.changeSizeUpDown();
     }
+    
+
+    public void bardakKolda (Transform kol)
+    {
+        // bardagi aradan çıkarıp childı ile parentını birbirine bağlıyoruz.
+        if (childBardak != null)
+        {
+            childBardak.parentBardak = parentBardak; 
+        } else//son bardağım demekki
+        {
+            bardakManager.lastAddedBardak = parentBardak;
+        }       
+        parentBardak.childBardak = childBardak;
+        parentBardak = null;
+        childBardak = null;
+
+        transform.parent = kol;        
+        transform.localPosition = Vector3.zero;
+    }
 }
